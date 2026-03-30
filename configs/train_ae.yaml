@@ -1,0 +1,31 @@
+experiment_name: anomaly-detection
+run_name: keras-ae
+
+data:
+  n_train: 60000
+  n_val: 10000
+  n_features: 16
+  anomaly_fraction_train: 0.0
+  anomaly_fraction_val: 0.02
+  random_seed: 7
+
+features:
+  scaler: robust
+
+model:
+  type: keras_autoencoder
+  hidden_sizes: [32, 16, 8]
+  bottleneck: 4
+  dropout: 0.05
+  l2: 0.00001
+  learning_rate: 0.001
+  batch_size: 512
+  epochs: 25
+  patience: 5
+
+threshold:
+  method: percentile
+  percentile: 99.5
+
+artifacts:
+  dir: artifacts

@@ -1,0 +1,25 @@
+experiment_name: anomaly-detection
+run_name: kmeans-baseline
+
+data:
+  n_train: 60000
+  n_val: 10000
+  n_features: 16
+  anomaly_fraction_train: 0.0
+  anomaly_fraction_val: 0.02
+  random_seed: 7
+
+features:
+  scaler: robust
+
+model:
+  type: kmeans
+  n_clusters: 12
+
+threshold:
+  method: percentile
+  percentile: 99.0
+
+artifacts:
+  dir: artifacts
+
